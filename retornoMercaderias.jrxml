@@ -17,7 +17,7 @@
 	<parameter name="cod_sublinea" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
-	<parameter name="desc_sublinea" class="java.lang.String">
+	<parameter name="xsublinea" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
@@ -25,14 +25,14 @@
                      AS cod_barra, p.iretorno_caja, p.iretorno_unidad, p.idevol_caja, p.idevol_unidad, p.frige_desde, p.frige_hasta
  FROM         mercaderias m INNER JOIN
                       retornos_precios p ON m.cod_empr = p.cod_empr AND m.cod_merca = p.cod_merca INNER JOIN
-                      tmp_mercaderias t ON m.cod_merca = t.cod_merca inner JOIN
+                      
                       sublineas s ON m.cod_sublinea = s.cod_sublinea
  WHERE     (m.cod_empr = 2)
 AND (m.mestado = 'A')
 AND (p.cod_depo = 1 )
  AND ((p.frige_desde <= $P{desde}   and p.frige_hasta >= $P{hasta} AND p.frige_desde <= $P{hasta} )
   OR  (p.frige_desde >= $P{desde}   and p.frige_hasta >= $P{hasta} AND p.frige_desde <= $P{hasta} ))
-and ( m.cod_sublinea = 0 or 0=0)
+  and ( m.cod_sublinea = $P{cod_sublinea} or $P{cod_sublinea}=0)
 ORDER BY m.cod_sublinea, m.cod_merca, p.ctipo_vta, p.frige_desde, p.frige_hasta]]>
 	</queryString>
 	<field name="cod_merca" class="java.lang.String"/>
@@ -73,7 +73,7 @@ ORDER BY m.cod_sublinea, m.cod_merca, p.ctipo_vta, p.frige_desde, p.frige_hasta]
 					</textElement>
 					<text><![CDATA[Relación:]]></text>
 				</staticText>
-				<textField>
+				<textField pattern="###0">
 					<reportElement x="340" y="0" width="100" height="14" uuid="45ba1493-3a6b-436b-a5d5-ba9fc99dc318"/>
 					<textFieldExpression><![CDATA[$F{nrelacion}]]></textFieldExpression>
 				</textField>
@@ -137,7 +137,7 @@ ORDER BY m.cod_sublinea, m.cod_merca, p.ctipo_vta, p.frige_desde, p.frige_hasta]
 				<textElement textAlignment="Center">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<text><![CDATA[rfacfalta]]></text>
+				<text><![CDATA[rretornos]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="429" y="2" width="44" height="14" uuid="8f32f822-47d9-4e50-b62f-6adc192d9bbe"/>
@@ -171,16 +171,9 @@ ORDER BY m.cod_sublinea, m.cod_merca, p.ctipo_vta, p.frige_desde, p.frige_hasta]
 				</textElement>
 				<text><![CDATA[TIPO PRECIO VENTA]]></text>
 			</staticText>
-			<staticText>
-				<reportElement x="447" y="100" width="53" height="14" uuid="48ad7b60-434b-4ba8-93de-bba076d151c6"/>
-				<textElement>
-					<font size="10" isBold="true"/>
-				</textElement>
-				<text><![CDATA[F. ANUL]]></text>
-			</staticText>
 			<textField>
 				<reportElement x="367" y="48" width="100" height="14" uuid="54a99a0f-0829-4898-bc6a-500f6990e00e"/>
-				<textFieldExpression><![CDATA[$P{desde1}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{hasta1}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="266" y="48" width="101" height="14" uuid="2428fe7e-a4d8-4c34-9654-059a625ac9d2"/>
@@ -195,13 +188,6 @@ ORDER BY m.cod_sublinea, m.cod_merca, p.ctipo_vta, p.frige_desde, p.frige_hasta]
 					<font size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[RETORNO]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="509" y="100" width="42" height="14" uuid="1adb24a7-58e7-4f66-964f-502ec4e19eac"/>
-				<textElement>
-					<font size="10" isBold="true"/>
-				</textElement>
-				<text><![CDATA[ESTADO]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="201" y="100" width="52" height="14" uuid="03c4d317-4cdb-4f86-bf09-d656da35fb61"/>
@@ -247,7 +233,7 @@ ORDER BY m.cod_sublinea, m.cod_merca, p.ctipo_vta, p.frige_desde, p.frige_hasta]
 			</staticText>
 			<textField>
 				<reportElement x="231" y="71" width="209" height="14" uuid="4a0d5da3-6967-4a79-8cdd-21a92891c461"/>
-				<textFieldExpression><![CDATA[$P{desc_sublinea}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{xsublinea}]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageHeader>

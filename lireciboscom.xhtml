@@ -22,44 +22,81 @@
 
                                 <p:panel id="pnlParamLiRetornoRecibo" header="LISTADO DE RECIBOS DE PROVEEDORES"
                                          style="width: 70%;">
-                                    <h:panelGrid columns="2" >
-
-                                        <p:outputLabel value="Fecha Recibo Desde:" style="float: right; font-weight: bold;"/>
+                                    
+                                    <h:panelGrid columns="4" >
+                                        <p:outputLabel value="Fecha Recibo Desde:" style="float: left; font-weight: bold;"/>
+                                        
                                         <p:calendar id="fechaReciboDesde" value="#{listadoRecibosProveedoresBean.fechaReciboDesde}" 
                                                     showOn="button" style="width: 60px;"/>  
-
-                                        <p:outputLabel value="Fecha Recibo Hasta:" style="float: right; font-weight: bold;"/>
+                                        
+                                        <p:outputLabel value=" " style="float: left; font-weight: bold; width: 30px;"/>
+                                        
+                                        <p:outputLabel value="Discriminar: " style="float: left; font-weight: bold;"/>
+                                        
+                                        <p:outputLabel value="Fecha Recibo Hasta:" style="float: left; font-weight: bold;"/>
+                                        
                                         <p:calendar id="fechaReciboHasta" value="#{listadoRecibosProveedoresBean.fechaReciboHasta}" 
-                                                    showOn="button" style="width: 60px;"/>
+                                                    showOn="button" style="width: 60px;"/>  
                                         
-                                        <p:outputLabel value="Número Recibo Desde:" style="float: right; font-weight: bold;"/>
-                                        <p:inputNumber id="numeroReciboDesde" decimalPlaces="0" value="#{listadoRecibosProveedoresBean.nroReciboDesde}"/>
+                                        <p:outputLabel value=" " style="float: left; font-weight: bold; width: 30px;"/>
                                         
-                                        <p:outputLabel value="Número Recibo Hasta:" style="float: right; font-weight: bold;"/>
-                                        <p:inputNumber id="numeroReciboHasta" decimalPlaces="0" value="#{listadoRecibosProveedoresBean.nroReciboHasta}"/>
-                                        
-                                        <p:outputLabel value="Proveedor:" style="float: right; font-weight: bold;"/>
-                                        <p:selectOneMenu id="seleccionProveedor" value="#{listadoRecibosProveedoresBean.proveedorSeleccionado}" 
+                                        <p:selectOneRadio id="discriminarId" value="#{listadoRecibosProveedoresBean.discriminar}"  
+                                                              layout="grid" columns="1" 
+                                                              style="border: #cccccc 1px solid; padding-left: 10px; padding-bottom: 10px; padding-top: 10px; margin: 0px; float: right;">
+                                                <f:selectItem itemLabel="No Discriminar" itemValue="ND"/>
+                                                <f:selectItem itemLabel="Por Proveedor" itemValue="PP" />
+                                         </p:selectOneRadio>
+                                    </h:panelGrid>
+                                    
+                                   
+                                    
+                                    <h:panelGrid columns="4" >
+                                         
+                                         <p:outputLabel value="Número Recibo Desde:" style="float: left; font-weight: bold;"/>
+                                         
+                                         <p:inputNumber id="numeroReciboDesde" decimalPlaces="0" 
+                                                       value="#{listadoRecibosProveedoresBean.nroReciboDesde}" style="float: right;"/>
+                                         <p:outputLabel value=" " style="float: left; font-weight: bold; width: 110px"/>
+                                         <p:outputLabel value=" " style="float: left; font-weight: bold; width: 100px"/>
+                                         <p:outputLabel value="Número Recibo Hasta:" style="float: left; font-weight: bold;"/>
+                                         
+                                         <p:inputNumber id="numeroReciboHasta" decimalPlaces="0" 
+                                                       value="#{listadoRecibosProveedoresBean.nroReciboHasta}"/>
+                                         
+                                         
+                     
+               
+                                    </h:panelGrid>
+                                    
+                                    
+                                    <h:panelGrid columns="4" >
+                                        <p:outputLabel value="Proveedor:" style="float: right; font-weight: bold; width: 90px;"/>                                      
+                                         
+                                          <p:selectOneMenu id="seleccionProveedor" value="#{listadoRecibosProveedoresBean.proveedorSeleccionado}" 
                                                          filterMatchMode="contains" filter="true" converter="#{ProveedoresConverter}"
-                                                         style="width: 100px;" >
+                                                         style="width: 300px;" >                                                                                        
                                             <f:selectItem itemValue="#{null}" itemLabel="TODOS"/>
                                                 <f:selectItems id="nombre" value="#{proveedoresBean.listar()}" var="nombreProv" 
                                                     itemValue="#{nombreProv}" 
                                                     itemLabel="#{nombreProv.xnombre}"/>
-
-                                        </p:selectOneMenu>
-
-                                        <p:outputLabel value="Discriminar: " style="float: right; font-weight: bold;"/>
+                                                
+                                          </p:selectOneMenu>
                                         
-                                        <p:selectOneButton id="discriminarId" value="#{listadoRecibosProveedoresBean.discriminar}">
-                                            <f:selectItem itemLabel="No Discriminar" itemValue="ND"/>
-                                            <f:selectItem itemLabel="Por Proveedor" itemValue="PP" />
-                                        </p:selectOneButton>
-                                        
-                                        <h:outputText value="Con detalles: " style="float: right; font-weight: bold;"/>
-                                        <p:selectBooleanButton id="detallesId" value="#{listadoRecibosProveedoresBean.conDetalle}" onLabel="Si" offLabel="No" style="width:60px" />
-
+                                         <p:outputLabel value="Con Detalles: " style="float: right; font-weight: bold; width: 100px;"/>
+                                         <p:selectBooleanCheckbox id="detallesId" value="#{listadoRecibosProveedoresBean.conDetalle}" itemLabel="" style="float: right; padding-left: 3px;"/>
+                                   
                                     </h:panelGrid>
+                                    
+                                       
+                                       
+
+                                        
+                                        <h:panelGrid columns="1" style="margin: 0px" cellpadding="0">
+                                           
+                                        </h:panelGrid>
+                                        
+                                          
+                                        
 
                                     <br></br>
 

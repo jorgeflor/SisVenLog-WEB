@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="totReten" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6eb08688-9ead-4365-b242-3d635d911486">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="3"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="usu_imprime" class="java.lang.String"/>
 	<parameter name="desde" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
@@ -59,21 +59,21 @@ ORDER BY  7, 1]]>
 		<groupFooter>
 			<band height="23">
 				<textField pattern="#,##0">
-					<reportElement x="483" y="7" width="69" height="16" uuid="79fdcd4d-f551-42f6-abe1-add40a8b997a"/>
+					<reportElement x="429" y="6" width="123" height="16" uuid="79fdcd4d-f551-42f6-abe1-add40a8b997a"/>
 					<textElement textAlignment="Right">
 						<font isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$V{iretencion_1}]]></textFieldExpression>
 				</textField>
 				<textField pattern="#,##0">
-					<reportElement x="263" y="7" width="212" height="14" uuid="93604063-3506-4514-a00c-956a48039816"/>
-					<textElement textAlignment="Right">
+					<reportElement x="290" y="5" width="288" height="14" uuid="93604063-3506-4514-a00c-956a48039816"/>
+					<textElement>
 						<font isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{mtipo}.equals("V")?"TOTAL RECIBOS CLIENTES: ": "TOTAL RECIBOS PROVEEDORES: "]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{mtipo}.equals("V")?"TOTAL RECIBOS CLIENTES ": "TOTAL RECIBOS PROVEEDORES "]]></textFieldExpression>
 				</textField>
 				<line>
-					<reportElement x="364" y="4" width="189" height="1" uuid="c6311dc6-84a7-46ef-980c-eafcb8061f84"/>
+					<reportElement x="446" y="6" width="107" height="1" uuid="c6311dc6-84a7-46ef-980c-eafcb8061f84"/>
 				</line>
 			</band>
 		</groupFooter>
@@ -101,22 +101,22 @@ ORDER BY  7, 1]]>
 				<text><![CDATA[Hasta:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="6" y="84" width="65" height="16" uuid="bac79874-c9db-47d6-851f-fba98f676f17"/>
-				<textElement>
+				<reportElement x="6" y="72" width="65" height="28" uuid="bac79874-c9db-47d6-851f-fba98f676f17"/>
+				<textElement verticalAlignment="Middle">
 					<font size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[FECHA]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="74" y="84" width="55" height="16" uuid="1e49df23-7a76-44f6-89e5-a8eeb2200d1e"/>
-				<textElement>
+				<reportElement x="102" y="72" width="57" height="27" uuid="1e49df23-7a76-44f6-89e5-a8eeb2200d1e"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
 					<font size="10" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Nº RECIBO]]></text>
+				<text><![CDATA[NRO. RECIBO]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="375" y="72" width="61" height="28" uuid="4b34b1ed-c94d-4c92-9f26-0e15b8c7cadb"/>
-				<textElement textAlignment="Right">
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[IMPORTE RECIBO]]></text>
@@ -170,15 +170,15 @@ ORDER BY  7, 1]]>
 				<text><![CDATA[Fecha:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="152" y="84" width="151" height="16" uuid="d3a1fd26-d4cd-411a-aa78-7895ba49151a"/>
-				<textElement>
+				<reportElement x="202" y="72" width="151" height="27" uuid="d3a1fd26-d4cd-411a-aa78-7895ba49151a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[CLIENTE/PROVEEDOR]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="459" y="71" width="89" height="28" uuid="0f1f4719-62f9-4175-8b8c-f241e11319a9"/>
-				<textElement textAlignment="Right">
+				<reportElement x="446" y="71" width="102" height="28" uuid="0f1f4719-62f9-4175-8b8c-f241e11319a9"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[TOTAL RETENCION]]></text>
@@ -203,15 +203,15 @@ ORDER BY  7, 1]]>
 				<textFieldExpression><![CDATA[$F{frecibo}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="74" y="0" width="67" height="14" uuid="2dd0aaf3-b83e-4bcb-86f6-abd7367b5276"/>
+				<reportElement x="123" y="0" width="67" height="14" uuid="2dd0aaf3-b83e-4bcb-86f6-abd7367b5276"/>
 				<textFieldExpression><![CDATA[$F{nrecibo}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="152" y="0" width="212" height="14" uuid="349915d7-e66d-4732-8387-14456a42f3f1"/>
+				<reportElement x="190" y="0" width="212" height="14" uuid="349915d7-e66d-4732-8387-14456a42f3f1"/>
 				<textFieldExpression><![CDATA[$F{xnombre}]]></textFieldExpression>
 			</textField>
 			<textField pattern="#,##0">
-				<reportElement x="374" y="0" width="62" height="14" uuid="248dbce2-7ad1-429d-89e5-3632731a90fd"/>
+				<reportElement x="370" y="0" width="62" height="14" uuid="248dbce2-7ad1-429d-89e5-3632731a90fd"/>
 				<textElement textAlignment="Right"/>
 				<textFieldExpression><![CDATA[$F{irecibo}]]></textFieldExpression>
 			</textField>
@@ -235,7 +235,7 @@ ORDER BY  7, 1]]>
 				<text><![CDATA[Impreso el:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="433" y="2" width="80" height="14" uuid="92456382-90d7-4600-9e51-ef0518ffbd3f"/>
+				<reportElement x="429" y="2" width="84" height="14" uuid="92456382-90d7-4600-9e51-ef0518ffbd3f"/>
 				<textElement textAlignment="Right">
 					<font size="8"/>
 				</textElement>
@@ -268,31 +268,31 @@ ORDER BY  7, 1]]>
 		</band>
 	</pageFooter>
 	<summary>
-		<band height="21" splitType="Stretch">
+		<band height="33" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="2" width="152" height="14" uuid="4548e667-8b80-45ca-a42b-860cdfe83bcb"/>
-				<textElement>
+				<reportElement x="0" y="6" width="152" height="18" uuid="4548e667-8b80-45ca-a42b-860cdfe83bcb"/>
+				<textElement verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[***FIN DEL INFORME***]]></text>
 			</staticText>
 			<textField pattern="#,##0;-#,##0">
-				<reportElement x="475" y="4" width="77" height="16" uuid="a5d3dcc2-91ce-4183-b841-76363ec10ce6"/>
+				<reportElement x="430" y="9" width="123" height="16" uuid="a5d3dcc2-91ce-4183-b841-76363ec10ce6"/>
 				<textElement textAlignment="Right">
 					<font isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{iretencion_2}]]></textFieldExpression>
 			</textField>
+			<line>
+				<reportElement x="446" y="9" width="108" height="1" uuid="dde078ce-457e-45cd-80fc-1df5fc1a322a"/>
+			</line>
 			<staticText>
-				<reportElement x="264" y="3" width="211" height="18" uuid="5976be72-40dd-470c-99ad-e84b5fcee7cf"/>
-				<textElement textAlignment="Right">
+				<reportElement x="213" y="6" width="211" height="18" uuid="5976be72-40dd-470c-99ad-e84b5fcee7cf"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font size="10" isBold="true"/>
 				</textElement>
-				<text><![CDATA[TOTAL RETENCIONES:  ]]></text>
+				<text><![CDATA[TOTAL RETENCIONES  ]]></text>
 			</staticText>
-			<line>
-				<reportElement x="365" y="2" width="189" height="1" uuid="dde078ce-457e-45cd-80fc-1df5fc1a322a"/>
-			</line>
 		</band>
 	</summary>
 </jasperReport>

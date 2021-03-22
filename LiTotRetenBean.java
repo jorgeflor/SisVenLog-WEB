@@ -1,5 +1,7 @@
 package bean.listados;
 
+
+import bean.LoginBean;
 import dao.EmpleadosFacade;
 import dao.ExcelFacade;
 import entidad.Empleados;
@@ -23,6 +25,7 @@ public class LiTotRetenBean {
 
     private Date desde;
     private Date hasta;
+    
 
     @EJB
     private ExcelFacade excelFacade;
@@ -38,6 +41,8 @@ public class LiTotRetenBean {
 
         this.desde = new Date();
         this.hasta = new Date();
+        //this.User = new LoginBean();
+        
 
     }
 
@@ -46,9 +51,12 @@ public class LiTotRetenBean {
 
         String fdesde = dateToString(desde);
         String fhasta = dateToString(hasta);
+        
+        
+        
 
         if (tipo.equals("VIST")) {
-            rep.reporteTotReten(dateToString(desde), dateToString(hasta), dateToString2(desde), dateToString2(hasta), "admin", tipo);
+            rep.reporteTotReten(dateToString(desde), dateToString(hasta), dateToString2(desde), dateToString2(hasta), LoginBean.user , tipo);
         } else {
 
             List<Object[]> lista = new ArrayList<Object[]>();
@@ -63,7 +71,8 @@ public class LiTotRetenBean {
             columnas[5] = "iretencion";
             columnas[6] = "mtipo";
 
-            String sql = "SELECT  r.nrecibo, r.cod_cliente, c.xnombre, r.irecibo, r.frecibo, r.iretencion, 'V' as mtipo\n"
+            String sql = "Use VenlogDB" 
+                    + "SELECT  r.nrecibo, r.cod_cliente, c.xnombre, r.irecibo, r.frecibo, r.iretencion, 'V' as mtipo\n"
                     + "    	 FROM recibos  r, clientes c\n"
                     + "	 WHERE r.cod_empr = 2\n"
                     + "	 AND r.cod_cliente = c.cod_cliente\n"
@@ -93,7 +102,7 @@ public class LiTotRetenBean {
 
         try {
 
-            DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+            DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd" + " 00:00:00.000");
 
             resultado = dateFormat.format(fecha);
 
