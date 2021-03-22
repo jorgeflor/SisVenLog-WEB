@@ -23,9 +23,9 @@ public class LoginBean implements Serializable {
 
     private RolesAplicaciones rolesAplicaciones;
 
-    private String user = "";
-    private String password = "";
-
+    public static String user;
+    public static String password;
+    
     private Usuarios usuarios;
 
     private conectar_BD bd = new conectar_BD();
@@ -35,7 +35,7 @@ public class LoginBean implements Serializable {
 
     public LoginBean() {
 
-        //instanciar();
+        
     }
 
     public void ingresar() {
@@ -163,6 +163,8 @@ public class LoginBean implements Serializable {
     public Usuarios getUsuarios() {
         return usuarios;
     }
+    
+           
 
     public void setUsuarios(Usuarios usuarios) {
         this.usuarios = usuarios;

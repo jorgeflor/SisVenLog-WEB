@@ -1,5 +1,6 @@
 package bean.listados;
 
+import bean.LoginBean;
 import dao.DepositosFacade;
 import dao.SublineasFacade;
 import entidad.Depositos;
@@ -70,17 +71,18 @@ public class LiRetornoMercaBean {
             descSublinea = "TODOS";
         }
 
-
-       rep.reporteLiRetornoPrecios(sublinea, descSublinea,dateToString(desde), dateToString2(desde), dateToString(hasta), dateToString2(hasta),  "admin", tipo);
-    }
-
-    private String dateToString(Date fecha) {
+    
+        
+       rep.reporteLiRetornoPrecios(sublinea, descSublinea, dateToString(desde),  dateToString(hasta), dateToString2(desde), dateToString2(hasta), LoginBean.user, tipo);
+    } 
+   
+       private String dateToString(Date fecha) {
 
         String resultado = "";
 
         try {
 
-            DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+            DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd 00:00:00.000");
 
             resultado = dateFormat.format(fecha);
 
